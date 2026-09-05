@@ -4,9 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project: Library</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo-and-text">
+          <img
+            src="img/odin-lined.png"
+            alt="The Odin Project Logo"
+            class="logo"
+          />
+          <span class="logo-text">Project: Library</span>
+        </div>
+        <!-- search bar -->
+        <div class="search-bar">
+          <svg
+            class="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" placeholder="Search books..." />
+        </div>
+
+        <button id="add-book-btn" class="btn-primary" type="button">
+          + Add New Book
+        </button>
+      </header>
+
+      <!-- Layout Wrapper -->
+      <div class="app-layout">
+        <aside class="sidebar">
+          <nav>
+            <ul>
+              <li class="active">All Books</li>
+              <li>Reading</li>
+              <li>Completed</li>
+            </ul>
+          </nav>
+        </aside>
+        <!-- intentionally empty for the book contents -->
+        <main class="library-content"></main>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <dialog id="book-modal" class="modal">
+      <form id="book-form">
+        <h2>Add a New Book</h2>
+
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" required />
+
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" required />
+
+        <label for="pages">Pages</label>
+        <input type="number" id="pages" name="pages" min="1" required />
+
+        <label for="cover"
+          >Cover image <span class="optional">(optional)</span></label
+        >
+        <input type="file" name="cover" id="cover" accept="image/*" />
+
+        <!-- hidden until a file is chosen; script.js flips the `hidden` prop -->
+        <img
+          id="cover-preview"
+          class="cover-preview"
+          alt="Selected cover preview"
+          hidden
+        />
+
+        <label class="checkbox-label">
+          <input type="checkbox" name="is-read" id="is-read" />
+          I have read this book
+        </label>
+
+        <div class="form-actions">
+          <button class="btn-secondary" type="button" id="close-modal">
+            Cancel
+          </button>
+          <button class="btn-primary" type="submit">Add</button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>
